@@ -1,5 +1,7 @@
 import React from "react";
 import { View, Image, StyleSheet, Text } from "react-native";
+import ListItem from "../components/ListItem";
+
 import colors from "../config/colors";
 
 export default function ListingDetailsScreen(props) {
@@ -9,6 +11,11 @@ export default function ListingDetailsScreen(props) {
                         <View style={styles.detailsContainer}>
                                 <Text style={styles.title}>Red jacket for sale</Text>
                                 <Text style={styles.price}>$100</Text>
+                                <ListItem
+                                        image={require("../assets/mosh.jpg")}
+                                        title="Mosh Hamedani"
+                                        subTitle="5 Listings"
+                                />
                         </View>
                 </View>
         );
