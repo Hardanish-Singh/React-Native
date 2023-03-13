@@ -18,7 +18,7 @@ export default function ListItem({ image, title, subTitle }) {
 const styles = StyleSheet.create({
         container: {
                 flexDirection: "row",
-                marginVertical: 50,
+                // marginVertical: 50,
         },
         image: {
                 width: 70,
