@@ -26,7 +26,12 @@ export default function MessagesScreen(props) {
                                 data={messages}
                                 keyExtractor={(message) => message.id}
                                 renderItem={({ item }) => (
-                                        <ListItem title={item.title} subTitle={item.description} image={item.image} />
+                                        <ListItem
+                                                title={item.title}
+                                                subTitle={item.description}
+                                                image={item.image}
+                                                onPress={() => console.log("Message Selected", item)}
+                                        />
                                 )}
                                 ItemSeparatorComponent={ListItemSeparator}
                         />
