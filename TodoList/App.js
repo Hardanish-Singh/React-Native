@@ -1,6 +1,8 @@
+// React Imports
 import { useState } from "react";
 import { StyleSheet, View, SafeAreaView, Text, FlatList, Platform } from "react-native";
 
+// Component Imports
 import GoalInput from "./components/GoalInput";
 import GoalItem from "./components/GoalItem";
 
@@ -23,6 +25,7 @@ export default function App() {
                                         goalInputHandler={goalInputHandler}
                                         addGoalHandler={addGoalHandler}
                                         goalsText={goalsText}
+                                        title="Add Me"
                                 />
                         </View>
                         <View style={styles.goalsContainer}>

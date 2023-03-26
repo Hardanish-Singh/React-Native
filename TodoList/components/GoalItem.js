@@ -1,3 +1,4 @@
+// React Imports
 import { View, Text, StyleSheet } from "react-native";
 
 export default function GoalItem({ text }) {

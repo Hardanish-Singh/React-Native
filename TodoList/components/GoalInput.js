@@ -1,6 +1,7 @@
+// React Imports
 import { TextInput, Button, StyleSheet, View } from "react-native";
 
-export default function GoalInput({ placeholder, goalInputHandler, addGoalHandler, goalsText }) {
+export default function GoalInput({ placeholder, goalInputHandler, addGoalHandler, goalsText, title }) {
         return (
                 <View style={styles.goalsInputContainer}>
                         <TextInput
@@ -9,7 +10,7 @@ export default function GoalInput({ placeholder, goalInputHandler, addGoalHandle
                                 value={goalsText}
                                 onChangeText={goalInputHandler}
                         />
-                        <Button title="Add Me" onPress={addGoalHandler} />
+                        <Button title={title} onPress={addGoalHandler} />
                 </View>
         );
 }
