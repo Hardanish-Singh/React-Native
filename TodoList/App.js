@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { StyleSheet, View, SafeAreaView, Text, FlatList } from "react-native";
+import { StyleSheet, View, SafeAreaView, Text, FlatList, Platform } from "react-native";
 
 import GoalInput from "./components/GoalInput";
 import GoalItem from "./components/GoalItem";
@@ -40,6 +40,7 @@ export default function App() {
 const styles = StyleSheet.create({
         container: {
                 flex: 1,
+                paddingTop: Platform.OS === "android" ? 50 : 0,
         },
         appInputContainer: {
                 flex: 1,
