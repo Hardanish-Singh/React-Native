@@ -9,7 +9,10 @@ export default function App() {
 
         const goalInputHandler = (enteredText) => setGoalsText(enteredText);
 
-        const addGoalHandler = () => setGoals((currentGoals) => [...currentGoals, goalsText]);
+        const addGoalHandler = () => {
+                setGoals((currentGoals) => [...currentGoals, goalsText]);
+                setGoalsText("");
+        };
 
         return (
                 <SafeAreaView style={styles.container}>
@@ -18,11 +21,12 @@ export default function App() {
                                         placeholder="Enter your goals here"
                                         goalInputHandler={goalInputHandler}
                                         addGoalHandler={addGoalHandler}
+                                        goalsText={goalsText}
                                 />
                         </View>
                         <View style={styles.goalsContainer}>
                                 {goals.map((goal) => {
-                                        return <Text>{goal}</Text>;
+                                        return <Text key={goal}>{goal}</Text>;
                                 })}
                         </View>
                 </SafeAreaView>
@@ -39,5 +43,6 @@ const styles = StyleSheet.create({
         },
         goalsContainer: {
                 flex: 5,
+                backgroundColor: "red",
         },
 });
