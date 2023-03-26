@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { StyleSheet, View, SafeAreaView, Text } from "react-native";
+import { StyleSheet, View, SafeAreaView, Text, FlatList } from "react-native";
 
 import GoalInput from "./components/GoalInput";
 
@@ -10,7 +10,7 @@ export default function App() {
         const goalInputHandler = (enteredText) => setGoalsText(enteredText);
 
         const addGoalHandler = () => {
-                setGoals((currentGoals) => [...currentGoals, goalsText]);
+                setGoals((currentGoals) => [...currentGoals, { text: goalsText, id: Math.random().toString() }]);
                 setGoalsText("");
         };
 
@@ -25,13 +25,20 @@ export default function App() {
                                 />
                         </View>
                         <View style={styles.goalsContainer}>
-                                {goals.map((goal) => {
-                                        return (
-                                                <View key={goal} style={styles.goalItemContainer}>
-                                                        <Text style={styles.goalItemText}>{goal}</Text>
-                                                </View>
-                                        );
-                                })}
+                                <FlatList
+                                        data={goals}
+                                        renderItem={(itemData) => {
+                                                return (
+                                                        <View style={styles.goalItemContainer}>
+                                                                <Text style={styles.goalItemText}>
+                                                                        {itemData.item.text}
+                                                                </Text>
+                                                        </View>
+                                                );
+                                        }}
+                                        keyExtractor={(item) => item.id}
+                                        alwaysBounceVertical={false}
+                                />
                         </View>
                 </SafeAreaView>
         );
