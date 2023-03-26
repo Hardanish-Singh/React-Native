@@ -1,10 +1,29 @@
-import { StyleSheet, Text, View, SafeAreaView } from "react-native";
+import { useState } from "react";
+import { StyleSheet, View, SafeAreaView, Text } from "react-native";
+
+import GoalInput from "./components/GoalInput";
 
 export default function App() {
+        const [goalsText, setGoalsText] = useState("");
+        const [goals, setGoals] = useState([]);
+
+        const goalInputHandler = (enteredText) => setGoalsText(enteredText);
+
+        const addGoalHandler = () => setGoals((currentGoals) => [...currentGoals, goalsText]);
+
         return (
                 <SafeAreaView style={styles.container}>
-                        <View>
-                                <Text style={styles.heading}>TODO LIST</Text>
+                        <View style={styles.inputContainer}>
+                                <GoalInput
+                                        placeholder="Enter your goals here"
+                                        goalInputHandler={goalInputHandler}
+                                        addGoalHandler={addGoalHandler}
+                                />
+                        </View>
+                        <View style={styles.goalsContainer}>
+                                {goals.map((goal) => {
+                                        return <Text>{goal}</Text>;
+                                })}
                         </View>
                 </SafeAreaView>
         );
@@ -13,11 +32,12 @@ export default function App() {
 const styles = StyleSheet.create({
         container: {
                 flex: 1,
-                backgroundColor: "#1E1A3C",
         },
-        heading: {
-                color: "#fff",
-                fontSize: 20,
-                fontWeight: "600",
+        inputContainer: {
+                flex: 1,
+                backgroundColor: "yellow",
+        },
+        goalsContainer: {
+                flex: 5,
         },
 });
