@@ -16,7 +16,7 @@ export default function App() {
 
         return (
                 <SafeAreaView style={styles.container}>
-                        <View style={styles.inputContainer}>
+                        <View style={styles.appInputContainer}>
                                 <GoalInput
                                         placeholder="Enter your goals here"
                                         goalInputHandler={goalInputHandler}
@@ -26,7 +26,11 @@ export default function App() {
                         </View>
                         <View style={styles.goalsContainer}>
                                 {goals.map((goal) => {
-                                        return <Text key={goal}>{goal}</Text>;
+                                        return (
+                                                <View key={goal} style={styles.goalItem}>
+                                                        <Text style={{ color: "white" }}>{goal}</Text>
+                                                </View>
+                                        );
                                 })}
                         </View>
                 </SafeAreaView>
@@ -37,12 +41,18 @@ const styles = StyleSheet.create({
         container: {
                 flex: 1,
         },
-        inputContainer: {
+        appInputContainer: {
                 flex: 1,
-                backgroundColor: "yellow",
+                borderBottomWidth: 1,
+                borderBottomColor: "#cccccc",
         },
         goalsContainer: {
-                flex: 5,
-                backgroundColor: "red",
+                flex: 3,
+        },
+        goalItem: {
+                margin: 8,
+                padding: 8,
+                borderRadius: 6,
+                backgroundColor: "#5e0acc",
         },
 });
