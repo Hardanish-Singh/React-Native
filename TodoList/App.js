@@ -12,6 +12,8 @@ export default function App() {
         const addGoalHandler = (text) =>
                 setGoals((currentGoals) => [...currentGoals, { text, id: Math.random().toString() }]);
 
+        const deleteGoalHandler = (id) => setGoals((currentGoals) => currentGoals.filter((goal) => goal.id !== id));
+
         return (
                 <SafeAreaView style={styles.container}>
                         <View style={styles.appInputContainer}>
@@ -24,7 +26,15 @@ export default function App() {
                         <View style={styles.goalsContainer}>
                                 <FlatList
                                         data={goals}
-                                        renderItem={(itemData) => <GoalItem text={itemData.item.text} />}
+                                        renderItem={(itemData) => (
+                                                <GoalItem
+                                                        text={itemData.item.text}
+                                                        deleteGoalHandler={deleteGoalHandler.bind(
+                                                                this,
+                                                                itemData.item.id
+                                                        )}
+                                                />
+                                        )}
                                         keyExtractor={(item) => item.id}
                                         alwaysBounceVertical={false}
                                 />
