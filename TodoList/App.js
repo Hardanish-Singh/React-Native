@@ -9,9 +9,8 @@ import GoalItem from "./components/GoalItem";
 export default function App() {
         const [goals, setGoals] = useState([]);
 
-        const addGoalHandler = (goalsText) => {
-                setGoals((currentGoals) => [...currentGoals, { text: goalsText, id: Math.random().toString() }]);
-        };
+        const addGoalHandler = (text) =>
+                setGoals((currentGoals) => [...currentGoals, { text, id: Math.random().toString() }]);
 
         return (
                 <SafeAreaView style={styles.container}>
