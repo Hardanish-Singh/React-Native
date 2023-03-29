@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { StyleSheet, View, SafeAreaView, FlatList, Platform } from "react-native";
 
-// Component Import
+// Component Imports
 import GoalInput from "./components/GoalInput";
 import GoalItem from "./components/GoalItem";
 
