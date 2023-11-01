@@ -16,7 +16,7 @@ export default function App() {
 
         return (
                 <SafeAreaView style={styles.container}>
-                        <View style={styles.appInputContainer}>
+                        <View style={styles.inputContainer}>
                                 <GoalInput
                                         placeholder="Enter your goals here"
                                         addGoalHandler={addGoalHandler}
@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
                 flex: 1,
                 paddingTop: Platform.OS === "android" ? 50 : 0,
         },
-        appInputContainer: {
+        inputContainer: {
                 flex: 1,
                 borderBottomWidth: 1,
                 borderBottomColor: "#cccccc",
