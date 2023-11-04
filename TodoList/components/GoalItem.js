@@ -1,4 +1,4 @@
-// React Imports
+// React Native Imports
 import { View, Text, StyleSheet, Pressable } from "react-native";
 
 export default function GoalItem({ text, deleteGoalHandler }) {
@@ -17,13 +17,13 @@ export default function GoalItem({ text, deleteGoalHandler }) {
 
 const styles = StyleSheet.create({
         goalItemContainer: {
-                margin: 8,
-                borderRadius: 6,
+                margin: 10,
+                borderRadius: 10,
                 backgroundColor: "#5e0acc",
         },
         goalItemText: {
                 color: "white",
-                padding: 8,
+                padding: 10,
         },
         pressedItem: {
                 opacity: 0.5,

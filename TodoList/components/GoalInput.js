@@ -1,10 +1,16 @@
 // React Imports
-import { useState } from "react";
+import { useState, useCallback } from "react";
+// React Native Imports
 import { TextInput, Button, StyleSheet, View } from "react-native";
 
 export default function GoalInput({ placeholder, addGoalHandler, title }) {
         const [goalsText, setGoalsText] = useState("");
         const goalInputHandler = (enteredText) => setGoalsText(enteredText);
+
+        const handlePress = useCallback(() => {
+                addGoalHandler(goalsText);
+                setGoalsText("");
+        }, [goalsText]);
 
         return (
                 <View style={styles.goalsInputContainer}>
@@ -16,10 +22,7 @@ export default function GoalInput({ placeholder, addGoalHandler, title }) {
                         />
                         <Button
                                 title={title}
-                                onPress={() => {
-                                        addGoalHandler(goalsText);
-                                        setGoalsText("");
-                                }}
+                                onPress={handlePress}
                         />
                 </View>
         );
@@ -35,6 +38,6 @@ const styles = StyleSheet.create({
                 borderWidth: 1,
                 width: "80%",
                 height: "100%",
-                marginLeft: 5,
+                marginLeft: 20,
         },
 });

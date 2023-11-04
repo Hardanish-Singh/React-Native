@@ -20,7 +20,7 @@ export default function App() {
                                 <GoalInput
                                         placeholder="Enter your goals here"
                                         addGoalHandler={addGoalHandler}
-                                        title="Add Me"
+                                        title="Add"
                                 />
                         </View>
                         <View style={styles.goalsContainer}>
