@@ -2,6 +2,7 @@
 import { useState } from "react";
 // React Native Imports
 import { StyleSheet, View, SafeAreaView, FlatList, Platform } from "react-native";
+// React Native UUID Import for generating unique ID's
 import uuid from 'react-native-uuid';
 
 // Component Imports

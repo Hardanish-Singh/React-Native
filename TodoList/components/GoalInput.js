@@ -1,5 +1,5 @@
 // React Imports
-import { useState, useCallback } from "react";
+import { useState } from "react";
 // React Native Imports
 import { TextInput, Button, StyleSheet, View } from "react-native";
 
@@ -7,10 +7,10 @@ export default function GoalInput({ placeholder, addGoalHandler, title }) {
         const [goalsText, setGoalsText] = useState("");
         const goalInputHandler = (enteredText) => setGoalsText(enteredText);
 
-        const handlePress = useCallback(() => {
+        const handlePress = () => {
                 addGoalHandler(goalsText);
                 setGoalsText("");
-        }, [goalsText]);
+        };
 
         return (
                 <View style={styles.goalsInputContainer}>
