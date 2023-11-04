@@ -2,6 +2,7 @@
 import { useState } from "react";
 // React Native Imports
 import { StyleSheet, View, SafeAreaView, FlatList, Platform } from "react-native";
+import uuid from 'react-native-uuid';
 
 // Component Imports
 import GoalInput from "./components/GoalInput";
@@ -10,7 +11,7 @@ import GoalItem from "./components/GoalItem";
 export default function App() {
         const [goals, setGoals] = useState([]);
 
-        const addGoalHandler = (text) => setGoals((currentGoals) => [...currentGoals, { text, id: Math.random().toString() }]);
+        const addGoalHandler = (text) => setGoals((currentGoals) => [...currentGoals, { text, id: uuid.v4() }]);
 
         const deleteGoalHandler = (id) => setGoals((currentGoals) => currentGoals.filter((goal) => goal.id !== id));
 
