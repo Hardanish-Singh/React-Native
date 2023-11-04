@@ -1,5 +1,6 @@
 // React Imports
 import { useState } from "react";
+// React Native Imports
 import { StyleSheet, View, SafeAreaView, FlatList, Platform } from "react-native";
 
 // Component Imports
@@ -9,8 +10,7 @@ import GoalItem from "./components/GoalItem";
 export default function App() {
         const [goals, setGoals] = useState([]);
 
-        const addGoalHandler = (text) =>
-                setGoals((currentGoals) => [...currentGoals, { text, id: Math.random().toString() }]);
+        const addGoalHandler = (text) => setGoals((currentGoals) => [...currentGoals, { text, id: Math.random().toString() }]);
 
         const deleteGoalHandler = (id) => setGoals((currentGoals) => currentGoals.filter((goal) => goal.id !== id));
 
@@ -29,10 +29,7 @@ export default function App() {
                                         renderItem={(itemData) => (
                                                 <GoalItem
                                                         text={itemData.item.text}
-                                                        deleteGoalHandler={deleteGoalHandler.bind(
-                                                                this,
-                                                                itemData.item.id
-                                                        )}
+                                                        deleteGoalHandler={() => deleteGoalHandler(itemData.item.id)}
                                                 />
                                         )}
                                         keyExtractor={(item) => item.id}
