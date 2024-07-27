@@ -1,10 +1,11 @@
-import { Link } from "expo-router";
+import { Link, router } from "expo-router";
 import { useState } from "react";
-import { Dimensions, Image, KeyboardAvoidingView, Platform, ScrollView, Text, View } from "react-native";
+import { Alert, Dimensions, Image, KeyboardAvoidingView, Platform, ScrollView, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import CustomButton from "@/components/CustomButton";
 import FormField from "@/components/FormField";
+import { createUser } from "@/lib/appwrite";
 import { images } from "../../constants";
 
 export default function SignUp() {
@@ -15,7 +16,23 @@ export default function SignUp() {
         password: "",
     });
 
-    const submit = async () => {};
+    const handleChange = (name: string, value: string) => setForm({ ...form, [name]: value });
+
+    const submit = async () => {
+        if (form.username === "" || form.email === "" || form.password === "") {
+            Alert.alert("Error", "Please fill in all fields");
+            return;
+        }
+        setSubmitting(true);
+        try {
+            const result = await createUser(form.email, form.password, form.username);
+            router.replace("/home");
+        } catch (error: any) {
+            Alert.alert("Error", error.message);
+        } finally {
+            setSubmitting(false);
+        }
+    };
 
     return (
         <SafeAreaView className="bg-primary h-full">
@@ -34,14 +51,14 @@ export default function SignUp() {
                         <FormField
                             title="Username"
                             value={form.username}
-                            handleChangeText={(e) => setForm({ ...form, username: e })}
+                            handleChangeText={(e) => handleChange("username", e)}
                             otherStyles="mt-10"
                         />
 
                         <FormField
                             title="Email"
                             value={form.email}
-                            handleChangeText={(e) => setForm({ ...form, email: e })}
+                            handleChangeText={(e) => handleChange("email", e)}
                             otherStyles="mt-7"
                             keyboardType="email-address"
                         />
@@ -49,7 +66,7 @@ export default function SignUp() {
                         <FormField
                             title="Password"
                             value={form.password}
-                            handleChangeText={(e) => setForm({ ...form, password: e })}
+                            handleChangeText={(e) => handleChange("password", e)}
                             otherStyles="mt-7"
                         />
 

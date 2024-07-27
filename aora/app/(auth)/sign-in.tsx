@@ -1,8 +1,9 @@
 import CustomButton from "@/components/CustomButton";
 import FormField from "@/components/FormField";
-import { Link } from "expo-router";
+import { signIn } from "@/lib/appwrite";
+import { Link, router } from "expo-router";
 import { useState } from "react";
-import { Dimensions, Image, KeyboardAvoidingView, Platform, ScrollView, Text, View } from "react-native";
+import { Alert, Dimensions, Image, KeyboardAvoidingView, Platform, ScrollView, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { images } from "../../constants";
 
@@ -13,9 +14,23 @@ export default function SignIn() {
         password: "",
     });
 
-    const submit = async () => {};
-
     const handleChange = (name: string, value: string) => setForm({ ...form, [name]: value });
+
+    const submit = async () => {
+        if (form.email === "" || form.password === "") {
+            Alert.alert("Error", "Please fill in all fields");
+            return;
+        }
+        setSubmitting(true);
+        try {
+            await signIn(form.email, form.password);
+            router.replace("/home");
+        } catch (error: any) {
+            Alert.alert("Error", error.message);
+        } finally {
+            setSubmitting(false);
+        }
+    };
 
     return (
         <SafeAreaView className="bg-primary h-full">
