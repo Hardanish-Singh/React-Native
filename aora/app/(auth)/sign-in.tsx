@@ -1,6 +1,7 @@
 import CustomButton from "@/components/CustomButton";
 import FormField from "@/components/FormField";
-import { signIn } from "@/lib/appwrite";
+import { useGlobalContext } from "@/context/GlobalProvider";
+import { getCurrentUser, signIn } from "@/lib/appwrite";
 import { Link, router } from "expo-router";
 import { useState } from "react";
 import { Alert, Dimensions, Image, KeyboardAvoidingView, Platform, ScrollView, Text, View } from "react-native";
@@ -8,6 +9,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { images } from "../../constants";
 
 export default function SignIn() {
+    const { setUser, setIsLoggedIn } = useGlobalContext();
     const [isSubmitting, setSubmitting] = useState(false);
     const [form, setForm] = useState({
         email: "",
@@ -24,6 +26,10 @@ export default function SignIn() {
         setSubmitting(true);
         try {
             await signIn(form.email, form.password);
+            const result = await getCurrentUser();
+            setUser(result);
+            setIsLoggedIn(true);
+            Alert.alert("Success", "User signed in successfully");
             router.replace("/home");
         } catch (error: any) {
             Alert.alert("Error", error.message);

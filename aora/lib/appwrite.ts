@@ -23,7 +23,7 @@ const account = new Account(client);
 const avatars = new Avatars(client);
 const databases = new Databases(client);
 
-// Register user
+// Register/Sign up User
 export async function createUser(email: string, password: string, username: string) {
     try {
         const newAccount = await account.create(ID.unique(), email, password, username);
@@ -31,7 +31,6 @@ export async function createUser(email: string, password: string, username: stri
             throw Error;
         }
         const avatarUrl = avatars.getInitials(username);
-        await signIn(email, password);
         const newUser = await databases.createDocument(
             appwriteConfig.databaseId,
             appwriteConfig.userCollectionId,
@@ -43,7 +42,6 @@ export async function createUser(email: string, password: string, username: stri
                 avatar: avatarUrl,
             }
         );
-
         return newUser;
     } catch (error: any) {
         console.error("Error creating user", error);
@@ -51,12 +49,15 @@ export async function createUser(email: string, password: string, username: stri
     }
 }
 
-// Sign In
+// Sign In User
 export async function signIn(email: string, password: string) {
     try {
+        await account.deleteSession("current");
         const session: any = await account.createEmailPasswordSession(email, password);
         return session;
-    } catch (error: any) {}
+    } catch (error: any) {
+        throw new Error(error);
+    }
 }
 
 // Get Account
