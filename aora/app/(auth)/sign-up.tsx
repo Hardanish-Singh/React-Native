@@ -30,6 +30,7 @@ export default function SignUp() {
             const result = await createUser(form.email, form.password, form.username);
             setUser(result);
             setIsLoggedIn(true);
+            Alert.alert("Success", "User signed up and signed in successfully");
             router.replace("/home");
         } catch (error: any) {
             Alert.alert("Error", error.message);
