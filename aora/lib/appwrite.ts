@@ -22,7 +22,7 @@ const account = new Account(client);
 const avatars = new Avatars(client);
 const databases = new Databases(client);
 
-// Register/Sign up User
+// Register / Sign up User
 export async function createUser(email: string, password: string, username: string) {
     try {
         const newAccount = await account.create(ID.unique(), email, password, username);
