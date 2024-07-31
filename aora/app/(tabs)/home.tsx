@@ -1,6 +1,7 @@
 import { FlatList, Image, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
+import SearchInput from "@/components/SearchInput";
 import { images } from "../../constants";
 
 export default function Home() {
@@ -22,6 +23,8 @@ export default function Home() {
                                 <Image source={images.logoSmall} className="w-9 h-10" resizeMode="contain" />
                             </View>
                         </View>
+
+                        <SearchInput />
                     </View>
                 )}
             />
