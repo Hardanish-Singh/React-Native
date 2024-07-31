@@ -10,7 +10,6 @@ export const appwriteConfig = {
     storageId: "66a5656b0011c2c947c8",
 };
 
-// Init your React Native SDK
 const client = new Client();
 
 // prettier-ignore
