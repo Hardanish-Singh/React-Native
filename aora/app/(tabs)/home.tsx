@@ -1,13 +1,22 @@
-import { FlatList, Image, Text, View } from "react-native";
+import { FlatList, Image, RefreshControl, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import EmptyState from "@/components/EmptyState";
 import SearchInput from "@/components/SearchInput";
 import Trending from "@/components/Trending";
 import { StatusBar } from "expo-status-bar";
+import { useState } from "react";
 import { images } from "../../constants";
 
 export default function Home() {
+    const [refreshing, setRefreshing] = useState(false);
+
+    const onRefresh = async () => {
+        setRefreshing(true);
+        // re-call videos -> if any new video appeared
+        setRefreshing(false);
+    };
+
     return (
         <SafeAreaView className="bg-primary h-full">
             <FlatList
@@ -35,6 +44,7 @@ export default function Home() {
                     </View>
                 )}
                 ListEmptyComponent={() => <EmptyState title="No Videos Found" subtitle="No videos created yet" />}
+                refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
             />
             <StatusBar backgroundColor="#161622" style="light" />
         </SafeAreaView>
