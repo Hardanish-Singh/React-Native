@@ -34,6 +34,7 @@ export default function Home() {
                         </View>
                     </View>
                 )}
+                ListEmptyComponent={() => <Text className="text-white">Empty</Text>}
             />
         </SafeAreaView>
     );
