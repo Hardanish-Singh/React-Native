@@ -41,6 +41,7 @@ export default function App() {
                         title="Continue with Email"
                         handlePress={() => router.push("/sign-in")}
                         containerStyles="w-full mt-7"
+                        isLoading={isLoading}
                     />
                 </View>
             </ScrollView>
