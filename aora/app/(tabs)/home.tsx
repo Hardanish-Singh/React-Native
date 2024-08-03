@@ -4,6 +4,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import EmptyState from "@/components/EmptyState";
 import SearchInput from "@/components/SearchInput";
 import Trending from "@/components/Trending";
+import VideoCard from "@/components/VideoCard";
 import { getAllPosts, getLatestPosts } from "@/lib/appwrite";
 import useAppwrite from "@/lib/useAppwrite";
 import { StatusBar } from "expo-status-bar";
@@ -27,7 +28,7 @@ export default function Home() {
             <FlatList
                 data={posts}
                 keyExtractor={(item: any) => item.$id}
-                renderItem={({ item }) => <Text className="text-3xl text-white">{item.title}</Text>}
+                renderItem={({ item }) => <VideoCard video={item} />}
                 ListHeaderComponent={() => (
                     <View className="flex my-6 px-4 space-y-4">
                         <View className="flex justify-between items-start flex-row mb-6">
