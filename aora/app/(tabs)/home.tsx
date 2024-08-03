@@ -27,7 +27,7 @@ export default function Home() {
             <FlatList
                 data={posts}
                 keyExtractor={(item: any) => item.$id}
-                renderItem={({ item }) => <Text className="text-3xl text-white">{item.$id}</Text>}
+                renderItem={({ item }) => <Text className="text-3xl text-white">{item.title}</Text>}
                 ListHeaderComponent={() => (
                     <View className="flex my-6 px-4 space-y-4">
                         <View className="flex justify-between items-start flex-row mb-6">
