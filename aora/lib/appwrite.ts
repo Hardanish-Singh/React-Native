@@ -99,3 +99,27 @@ export async function signOut() {
         throw new Error(error);
     }
 }
+
+// Get all Video Posts
+export async function getAllPosts() {
+    try {
+        const posts = await databases.listDocuments(appwriteConfig.databaseId, appwriteConfig.videoCollectionId);
+        return posts.documents;
+    } catch (error: any) {
+        throw new Error(error);
+    }
+}
+
+// Get latest created video posts
+export async function getLatestPosts() {
+    try {
+        const posts = await databases.listDocuments(appwriteConfig.databaseId, appwriteConfig.videoCollectionId, [
+            Query.orderDesc("$createdAt"),
+            Query.limit(7),
+        ]);
+
+        return posts.documents;
+    } catch (error: any) {
+        throw new Error(error);
+    }
+}

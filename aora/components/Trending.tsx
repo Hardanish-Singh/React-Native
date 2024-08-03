@@ -8,8 +8,8 @@ const Trending = ({ posts }: TrendingProps) => {
     return (
         <FlatList
             data={posts}
-            keyExtractor={(item: any) => item.id}
-            renderItem={({ item }) => <Text className="text-3xl text-white">{item.id}</Text>}
+            keyExtractor={(item: any) => item.$id}
+            renderItem={({ item }) => <Text className="text-3xl text-white">{item.$id}</Text>}
             horizontal
         />
     );
