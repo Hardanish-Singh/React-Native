@@ -45,7 +45,6 @@ const TrendingItem = ({ item }: any) => {
                     className="w-full h-72 mt-3 relative flex justify-center items-center"
                 >
                     <Image source={{ uri: item.thumbnail }} className="w-72 h-72 mt-3" resizeMode="cover" />
-
                     <Image source={icons.play} className="w-12 h-12 absolute" resizeMode="contain" />
                 </TouchableOpacity>
             )}

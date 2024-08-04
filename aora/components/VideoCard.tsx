@@ -72,7 +72,6 @@ const VideoCard = ({ video }: any) => {
                     className="w-full h-60 rounded-xl mt-3 relative flex justify-center items-center"
                 >
                     <Image source={{ uri: thumbnail }} className="w-full h-full rounded-xl mt-3" resizeMode="cover" />
-
                     <Image source={icons.play} className="w-12 h-12 absolute" resizeMode="contain" />
                 </TouchableOpacity>
             )}
