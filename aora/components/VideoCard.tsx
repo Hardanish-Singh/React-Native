@@ -1,7 +1,7 @@
-import { Audio, ResizeMode, Video } from "expo-av";
+import { Audio /*ResizeMode, Video*/ } from "expo-av";
 import { useEffect, useState } from "react";
 import { Image, Text, TouchableOpacity, View } from "react-native";
-
+import WebView from "react-native-webview";
 import { icons } from "../constants";
 
 const VideoCard = ({ video }: any) => {
@@ -41,18 +41,30 @@ const VideoCard = ({ video }: any) => {
             </View>
 
             {play ? (
-                <Video
-                    source={{ uri: videoUrl }}
-                    className="w-full h-60 rounded-xl mt-3"
-                    resizeMode={ResizeMode.CONTAIN}
-                    useNativeControls
-                    shouldPlay
-                    onPlaybackStatusUpdate={(status: any) => {
-                        if (status.didJustFinish) {
-                            setPlay(false);
-                        }
-                    }}
-                />
+                // <Video
+                //     source={{ uri: videoUrl }}
+                //     className="w-full h-60 rounded-xl mt-3"
+                //     resizeMode={ResizeMode.CONTAIN}
+                //     useNativeControls
+                //     shouldPlay
+                //     onPlaybackStatusUpdate={(status: any) => {
+                //         if (status.didJustFinish) {
+                //             setPlay(false);
+                //         }
+                //     }}
+                // />
+                <View className="flex w-full h-60 rounded-xl mt-3">
+                    <WebView
+                        allowsInlineMediaPlayback
+                        source={{
+                            html: `
+                            <div style="width: 100%; height: 100%; background: #161622">
+                                <iframe src="${videoUrl}?controls=0&autoplay=1&showinfo=0" frameborder="0" allowfullscreen style="width: 100%; height: 100%;"></iframe>
+                            </div>
+                            `,
+                        }}
+                    />
+                </View>
             ) : (
                 <TouchableOpacity
                     activeOpacity={0.7}
