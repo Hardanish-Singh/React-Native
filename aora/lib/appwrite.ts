@@ -123,3 +123,19 @@ export async function getLatestPosts() {
         throw new Error(error);
     }
 }
+
+// Get video posts that matches search query
+export async function searchPosts(query: string) {
+    try {
+        const posts = await databases.listDocuments(appwriteConfig.databaseId, appwriteConfig.videoCollectionId, [
+            // Query.search("title", query),
+            Query.contains("title", query),
+        ]);
+        if (!posts) {
+            throw new Error("Something went wrong");
+        }
+        return posts.documents;
+    } catch (error: any) {
+        throw new Error(error);
+    }
+}

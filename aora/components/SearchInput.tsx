@@ -6,6 +6,7 @@ import { icons } from "../constants";
 
 type SearchInputProps = {
     initialQuery?: string;
+    refetch?: () => void; // A function to refresh the current route with new query parameters.
 };
 
 const SearchInput = ({ initialQuery }: SearchInputProps) => {
@@ -13,10 +14,16 @@ const SearchInput = ({ initialQuery }: SearchInputProps) => {
     const [query, setQuery] = useState(initialQuery || "");
 
     const handleSubmit = () => {
-        if (query === "")
+        if (query === "") {
             return Alert.alert("Missing Query", "Please input something to search results across database");
-        if (pathname.startsWith("/search")) router.setParams({ query });
-        else router.push(`/search/${query}`);
+        }
+        if (pathname.startsWith("/search")) {
+            // Update the current route query params.
+            router.setParams({ query });
+        } else {
+            // Navigate to the provided href using a push operation if possible.
+            router.push(`/search/${query}`);
+        }
     };
 
     return (
@@ -29,7 +36,6 @@ const SearchInput = ({ initialQuery }: SearchInputProps) => {
                 onChangeText={(e) => setQuery(e)}
                 onSubmitEditing={handleSubmit}
             />
-
             <TouchableOpacity onPress={handleSubmit}>
                 <Image source={icons.search} className="w-5 h-5" resizeMode="contain" />
             </TouchableOpacity>
