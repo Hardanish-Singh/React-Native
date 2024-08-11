@@ -144,7 +144,7 @@ export async function searchPosts(query: string) {
 export async function getUserPosts(userId: any) {
     try {
         const posts = await databases.listDocuments(appwriteConfig.databaseId, appwriteConfig.videoCollectionId, [
-            Query.equal("creator", userId),
+            Query.equal("users", userId),
         ]);
 
         return posts.documents;
