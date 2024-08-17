@@ -5,6 +5,7 @@ import EmptyState from "@/components/EmptyState";
 import SearchInput from "@/components/SearchInput";
 import Trending from "@/components/Trending";
 import VideoCard from "@/components/VideoCard";
+import { useGlobalContext } from "@/context/GlobalProvider";
 import { getAllPosts, getLatestPosts } from "@/lib/appwrite";
 import useAppwrite from "@/lib/useAppwrite";
 import { StatusBar } from "expo-status-bar";
@@ -12,6 +13,7 @@ import { useState } from "react";
 import { images } from "../../constants";
 
 export default function Home() {
+    const { user } = useGlobalContext();
     const { data: posts, refetch } = useAppwrite(getAllPosts);
     const { data: latestPosts } = useAppwrite(getLatestPosts);
 
@@ -33,8 +35,8 @@ export default function Home() {
                     <View className="flex my-6 px-4 space-y-4">
                         <View className="flex justify-between items-start flex-row mb-6">
                             <View>
-                                <Text className="font-pmedium text-sm text-gray-100">Welcome Back</Text>
-                                <Text className="text-2xl font-psemibold text-white">JSMastery</Text>
+                                <Text className="font-pmedium text-sm text-gray-100">Welcome back, </Text>
+                                <Text className="text-2xl font-psemibold text-white">{user?.username}</Text>
                             </View>
                             <View className="mt-1.5">
                                 <Image source={images.logoSmall} className="w-9 h-10" resizeMode="contain" />
