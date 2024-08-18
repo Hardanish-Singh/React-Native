@@ -1,4 +1,4 @@
-import { Audio /*ResizeMode, Video*/ } from "expo-av";
+import { Audio, ResizeMode, Video } from "expo-av";
 import { useEffect, useState } from "react";
 import { FlatList, Image, TouchableOpacity, View } from "react-native";
 import WebView from "react-native-webview";
@@ -14,30 +14,35 @@ const TrendingItem = ({ item }: any) => {
     return (
         <View className="mr-5">
             {play ? (
-                // <Video
-                //     source={{ uri: item.video }}
-                //     className="w-52 h-72 rounded-[33px] mt-3 bg-white/10"
-                //     resizeMode={ResizeMode.CONTAIN}
-                //     useNativeControls
-                //     shouldPlay
-                //     onPlaybackStatusUpdate={(status: any) => {
-                //         if (status.didJustFinish) {
-                //             setPlay(false);
-                //         }
-                //     }}
-                // />
-                <View className="flex w-72 h-72 mt-4">
-                    <WebView
-                        allowsInlineMediaPlayback
-                        source={{
-                            html: `
-                            <div style="width: 100%; height: 100%; background: #161622">
-                                <iframe src="${item.video}?controls=0&autoplay=1&showinfo=0" frameborder="0" allowfullscreen style="width: 100%; height: 100%;"></iframe>
-                            </div>
-                            `,
-                        }}
-                    />
-                </View>
+                <>
+                    {item.video.includes("/storage/buckets") ? (
+                        <Video
+                            source={{ uri: item.video }}
+                            className="flex w-72 h-72 mt-4"
+                            resizeMode={ResizeMode.CONTAIN}
+                            useNativeControls
+                            shouldPlay
+                            onPlaybackStatusUpdate={(status: any) => {
+                                if (status.didJustFinish) {
+                                    setPlay(false);
+                                }
+                            }}
+                        />
+                    ) : (
+                        <View className="flex w-72 h-72 mt-4">
+                            <WebView
+                                allowsInlineMediaPlayback
+                                source={{
+                                    html: `
+                                            <div style="width: 100%; height: 100%; background: #161622">
+                                                <iframe src="${item.video}?controls=0&autoplay=1&showinfo=0" frameborder="0" allowfullscreen style="width: 100%; height: 100%;"></iframe>
+                                            </div>
+                                        `,
+                                }}
+                            />
+                        </View>
+                    )}
+                </>
             ) : (
                 <TouchableOpacity
                     activeOpacity={0.7}
