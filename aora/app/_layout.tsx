@@ -6,7 +6,8 @@ import { useEffect } from "react";
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
 
-export default function RootLayout() {
+const RootLayout = () => {
+    // Load the custom fonts before the app loads.
     const [fontsLoaded, error] = useFonts({
         "Poppins-Black": require("../assets/fonts/Poppins-Black.ttf"),
         "Poppins-Bold": require("../assets/fonts/Poppins-Bold.ttf"),
@@ -19,15 +20,19 @@ export default function RootLayout() {
         "Poppins-Thin": require("../assets/fonts/Poppins-Thin.ttf"),
     });
 
+    // Wait until the fonts have loaded before showing the app.
     useEffect(() => {
+        // if there is an error loading the fonts then throw the error
         if (error) {
             throw error;
         }
+        // If the fonts have loaded then hide the splash screen.
         if (fontsLoaded) {
             SplashScreen.hideAsync();
         }
     }, [fontsLoaded, error]);
 
+    // Return null if fonts are still loading or there's an error.
     if (!fontsLoaded && !error) {
         return null;
     }
@@ -42,4 +47,6 @@ export default function RootLayout() {
             </Stack>
         </GlobalProvider>
     );
-}
+};
+
+export default RootLayout;
