@@ -6,7 +6,7 @@ import { useEffect } from "react";
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
 
-const RootLayout = () => {
+const RootLayout = (): React.JSX.Element | null => {
     // Load the custom fonts before the app loads.
     const [fontsLoaded, error] = useFonts({
         "Poppins-Black": require("../assets/fonts/Poppins-Black.ttf"),
