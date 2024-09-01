@@ -6,8 +6,10 @@ import { Image, ScrollView, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { images } from "../constants";
 
-export default function App() {
+const App: React.FC = (): React.JSX.Element => {
+    // get the global context state to check if the app is loading or logged in
     const { isLoading, isLoggedIn } = useGlobalContext();
+    // if not loading and logged in then redirect to home screen
     if (!isLoading && isLoggedIn) {
         return <Redirect href="/home" />;
     }
@@ -48,4 +50,6 @@ export default function App() {
             <StatusBar backgroundColor="#161622" style="light" />
         </SafeAreaView>
     );
-}
+};
+
+export default App;
