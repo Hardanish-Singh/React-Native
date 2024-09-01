@@ -29,7 +29,6 @@ const App: React.FC = (): React.JSX.Element => {
                             Discover Endless{"\n"}
                             Possibilities with <Text className="text-secondary-200">Aora</Text>
                         </Text>
-
                         <Image
                             source={images.path}
                             className="w-[136px] h-[15px] absolute -bottom-2 -right-8"
