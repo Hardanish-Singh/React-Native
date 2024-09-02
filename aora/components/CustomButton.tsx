@@ -19,7 +19,6 @@ const CustomButton = ({ title, handlePress, containerStyles, textStyles, isLoadi
             disabled={isLoading}
         >
             <Text className={`text-primary font-psemibold text-lg ${textStyles}`}>{title}</Text>
-
             {isLoading && <ActivityIndicator animating={isLoading} color="#fff" size="small" className="ml-2" />}
         </TouchableOpacity>
     );
