@@ -8,7 +8,7 @@ type Props = {
     isLoading?: boolean;
 };
 
-const CustomButton = ({ title, handlePress, containerStyles, textStyles, isLoading }: Props) => {
+const CustomButton: React.FC<Props> = ({ title, handlePress, containerStyles, textStyles, isLoading }: Props) => {
     return (
         <TouchableOpacity
             onPress={handlePress}
