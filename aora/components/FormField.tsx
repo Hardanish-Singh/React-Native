@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Image, Text, TextInput, TextInputProps, TouchableOpacity, View } from "react-native";
-
 import { icons } from "../constants";
 
 type FormFieldProps = {
