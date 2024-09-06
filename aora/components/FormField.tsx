@@ -10,7 +10,14 @@ type FormFieldProps = {
     otherStyles?: string;
 } & TextInputProps;
 
-const FormField = ({ title, value, placeholder, handleChangeText, otherStyles, ...props }: FormFieldProps) => {
+const FormField: React.FC<FormFieldProps> = ({
+    title,
+    value,
+    placeholder,
+    handleChangeText,
+    otherStyles,
+    ...props
+}: FormFieldProps) => {
     const [showPassword, setShowPassword] = useState(false);
 
     return (
