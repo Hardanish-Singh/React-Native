@@ -26,7 +26,6 @@ const FormField = ({ title, value, placeholder, handleChangeText, otherStyles, .
                     secureTextEntry={title === "Password" && !showPassword}
                     {...props}
                 />
-
                 {title === "Password" && (
                     <TouchableOpacity onPress={() => setShowPassword(!showPassword)}>
                         <Image
