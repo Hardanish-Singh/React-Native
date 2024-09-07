@@ -19,7 +19,6 @@ const FormField: React.FC<FormFieldProps> = ({
     ...props
 }: FormFieldProps) => {
     const [showPassword, setShowPassword] = useState(false);
-
     return (
         <View className={`space-y-2 ${otherStyles}`}>
             <Text className="text-base text-gray-100 font-pmedium">{title}</Text>
