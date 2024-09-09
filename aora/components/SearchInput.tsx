@@ -8,7 +8,7 @@ type SearchInputProps = {
     refetch?: () => void; // A function to refresh the current route with new query parameters.
 };
 
-const SearchInput = ({ initialQuery }: SearchInputProps) => {
+const SearchInput: React.FC<SearchInputProps> = ({ initialQuery }: SearchInputProps) => {
     const pathname = usePathname();
     const [query, setQuery] = useState(initialQuery || "");
 
