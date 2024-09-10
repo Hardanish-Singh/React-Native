@@ -4,7 +4,7 @@ import { FlatList, Image, TouchableOpacity, View } from "react-native";
 import WebView from "react-native-webview";
 import { icons } from "../constants";
 
-const TrendingItem = ({ item }: any) => {
+const TrendingItem: React.FC<any> = ({ item }: any) => {
     const [play, setPlay] = useState(false);
 
     useEffect(() => {
@@ -57,7 +57,7 @@ const TrendingItem = ({ item }: any) => {
     );
 };
 
-const Trending = ({ posts }: any) => {
+const Trending: React.FC<any> = ({ posts }: any) => {
     return (
         <FlatList
             data={posts}
