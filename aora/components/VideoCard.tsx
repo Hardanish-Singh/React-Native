@@ -4,13 +4,14 @@ import { Image, Text, TouchableOpacity, View } from "react-native";
 import WebView from "react-native-webview";
 import { icons } from "../constants";
 
-const VideoCard = ({ video }: any) => {
+const VideoCard: React.FC<any> = ({ video }: any) => {
     const {
         title,
         thumbnail,
         users: { avatar, username: creator },
         video: videoUrl,
     } = video;
+
     const [play, setPlay] = useState(false);
 
     useEffect(() => {
