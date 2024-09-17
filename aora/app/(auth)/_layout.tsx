@@ -1,7 +1,7 @@
 import { Stack } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 
-export default function AuthLayout() {
+const AuthLayout: React.FC = (): React.JSX.Element => {
     return (
         <>
             <Stack>
@@ -21,4 +21,6 @@ export default function AuthLayout() {
             <StatusBar backgroundColor="#161622" style="light" />
         </>
     );
-}
+};
+
+export default AuthLayout;
