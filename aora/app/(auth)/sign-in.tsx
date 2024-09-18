@@ -8,7 +8,7 @@ import { Alert, Dimensions, Image, KeyboardAvoidingView, Platform, ScrollView, T
 import { SafeAreaView } from "react-native-safe-area-context";
 import { images } from "../../constants";
 
-export default function SignIn() {
+const SignIn: React.FC = (): React.JSX.Element => {
     const { setUser, setIsLoggedIn } = useGlobalContext();
     const [isSubmitting, setSubmitting] = useState(false);
     const [form, setForm] = useState({
@@ -80,4 +80,6 @@ export default function SignIn() {
             </KeyboardAvoidingView>
         </SafeAreaView>
     );
-}
+};
+
+export default SignIn;
