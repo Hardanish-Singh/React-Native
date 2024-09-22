@@ -9,7 +9,7 @@ type TabIconProps = {
     focused: boolean;
 };
 
-const TabIcon = ({ icon, color, name, focused }: TabIconProps) => {
+const TabIcon = ({ icon, color, name, focused }: TabIconProps): React.JSX.Element => {
     return (
         <View className="flex items-center justify-center gap-2">
             <Image source={icon} resizeMode="contain" tintColor={color} className="w-6 h-6" />
@@ -20,7 +20,7 @@ const TabIcon = ({ icon, color, name, focused }: TabIconProps) => {
     );
 };
 
-export default function TabsLayout() {
+export default function TabsLayout(): React.JSX.Element {
     return (
         <>
             <Tabs
