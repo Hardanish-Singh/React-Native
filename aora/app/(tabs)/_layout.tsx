@@ -18,7 +18,7 @@ const TabIcon: React.FC<TabIconProps> = ({ icon, color, name, focused }: TabIcon
     </View>
 );
 
-const TabsLayout = (): React.JSX.Element => (
+const TabsLayout: React.FC = (): React.JSX.Element => (
     <Tabs
         screenOptions={{
             tabBarActiveTintColor: "#FFA001",
