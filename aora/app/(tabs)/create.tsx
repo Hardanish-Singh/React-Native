@@ -10,7 +10,7 @@ import { useState } from "react";
 import { Alert, Image, KeyboardAvoidingView, Platform, ScrollView, Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-export default function Create() {
+const Create = () => {
     const { user } = useGlobalContext();
     const [uploading, setUploading] = useState(false);
     const [form, setForm] = useState<Record<string, any>>({
@@ -146,4 +146,6 @@ export default function Create() {
             </KeyboardAvoidingView>
         </SafeAreaView>
     );
-}
+};
+
+export default Create;
