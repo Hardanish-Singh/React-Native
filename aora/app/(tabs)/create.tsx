@@ -12,7 +12,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 
 const Create: React.FC = (): React.JSX.Element => {
     const { user } = useGlobalContext();
-    const [uploading, setUploading] = useState(false);
+    const [uploading, setUploading] = useState<boolean>(false);
     const [form, setForm] = useState<Record<string, any>>({
         title: "",
         video: null,
