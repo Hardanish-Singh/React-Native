@@ -10,7 +10,7 @@ import { useState } from "react";
 import { Alert, Image, KeyboardAvoidingView, Platform, ScrollView, Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-const Create = () => {
+const Create: React.FC = (): React.JSX.Element => {
     const { user } = useGlobalContext();
     const [uploading, setUploading] = useState(false);
     const [form, setForm] = useState<Record<string, any>>({
@@ -80,7 +80,6 @@ const Create = () => {
                         handleChangeText={(e) => setForm({ ...form, title: e })}
                         otherStyles="mt-10"
                     />
-
                     <View className="mt-7 space-y-2">
                         <Text className="text-base text-gray-100 font-pmedium">Upload Video</Text>
                         <TouchableOpacity onPress={() => openPicker("video")}>
@@ -104,7 +103,6 @@ const Create = () => {
                             )}
                         </TouchableOpacity>
                     </View>
-
                     <View className="mt-7 space-y-2">
                         <Text className="text-base text-gray-100 font-pmedium">Thumbnail Image</Text>
                         <TouchableOpacity onPress={() => openPicker("image")}>
@@ -127,7 +125,6 @@ const Create = () => {
                             )}
                         </TouchableOpacity>
                     </View>
-
                     <FormField
                         title="AI Prompt"
                         value={form.prompt}
@@ -135,7 +132,6 @@ const Create = () => {
                         handleChangeText={(e) => setForm({ ...form, prompt: e })}
                         otherStyles="mt-7"
                     />
-
                     <CustomButton
                         title="Submit & Publish"
                         handlePress={submit}
