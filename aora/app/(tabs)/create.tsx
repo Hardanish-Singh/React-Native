@@ -19,6 +19,7 @@ const Create: React.FC = (): React.JSX.Element => {
         thumbnail: null,
         prompt: "",
     });
+
     const openPicker = async (selectType: string) => {
         const result = await DocumentPicker.getDocumentAsync({
             type: selectType === "image" ? ["image/png", "image/jpg"] : ["video/mp4", "video/gif"],
