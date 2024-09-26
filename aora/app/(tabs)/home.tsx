@@ -11,7 +11,7 @@ import { FlatList, Image, RefreshControl, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { images } from "../../constants";
 
-const Home = () => {
+const Home: React.FC = (): JSX.Element => {
     const { user } = useGlobalContext();
     const { data: posts, refetch: refetchAllPosts } = useAppwrite(getAllPosts);
     const { data: latestPosts, refetch: refetchLatestPosts } = useAppwrite(getLatestPosts);
