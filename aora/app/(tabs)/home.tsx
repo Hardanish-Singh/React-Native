@@ -15,7 +15,6 @@ const Home: React.FC = (): JSX.Element => {
     const { user } = useGlobalContext();
     const { data: posts, refetch: refetchAllPosts } = useAppwrite(getAllPosts);
     const { data: latestPosts, refetch: refetchLatestPosts } = useAppwrite(getLatestPosts);
-
     const [refreshing, setRefreshing] = useState(false);
 
     const onRefresh = async () => {
