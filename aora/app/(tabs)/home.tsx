@@ -1,6 +1,3 @@
-import { FlatList, Image, RefreshControl, Text, View } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
-
 import EmptyState from "@/components/EmptyState";
 import SearchInput from "@/components/SearchInput";
 import Trending from "@/components/Trending";
@@ -10,6 +7,8 @@ import { getAllPosts, getLatestPosts } from "@/lib/appwrite";
 import useAppwrite from "@/lib/useAppwrite";
 import { StatusBar } from "expo-status-bar";
 import { useState } from "react";
+import { FlatList, Image, RefreshControl, Text, View } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 import { images } from "../../constants";
 
 const Home = () => {
