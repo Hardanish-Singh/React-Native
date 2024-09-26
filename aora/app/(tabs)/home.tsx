@@ -12,7 +12,7 @@ import { StatusBar } from "expo-status-bar";
 import { useState } from "react";
 import { images } from "../../constants";
 
-export default function Home() {
+const Home = () => {
     const { user } = useGlobalContext();
     const { data: posts, refetch: refetchAllPosts } = useAppwrite(getAllPosts);
     const { data: latestPosts, refetch: refetchLatestPosts } = useAppwrite(getLatestPosts);
@@ -58,4 +58,6 @@ export default function Home() {
             <StatusBar backgroundColor="#161622" style="light" />
         </SafeAreaView>
     );
-}
+};
+
+export default Home;
