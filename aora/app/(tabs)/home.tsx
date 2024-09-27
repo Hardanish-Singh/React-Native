@@ -41,9 +41,7 @@ const Home: React.FC = (): JSX.Element => {
                                 <Image source={images.logoSmall} className="w-9 h-10" resizeMode="contain" />
                             </View>
                         </View>
-
                         <SearchInput />
-
                         <View className="w-full flex-1 pt-5 pb-8">
                             <Text className="text-lg font-pregular text-gray-100 mb-3">Latest Videos</Text>
                             <Trending posts={latestPosts ?? []} />
