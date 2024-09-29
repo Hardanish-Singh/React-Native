@@ -34,7 +34,6 @@ const Profile: React.FC = (): React.JSX.Element => {
                         <TouchableOpacity onPress={logout} className="flex w-full items-end mb-10">
                             <Image source={icons.logout} resizeMode="contain" className="w-6 h-6" />
                         </TouchableOpacity>
-
                         <View className="w-16 h-16 border border-secondary rounded-lg flex justify-center items-center">
                             <Image
                                 source={{ uri: user?.avatar }}
@@ -42,9 +41,7 @@ const Profile: React.FC = (): React.JSX.Element => {
                                 resizeMode="cover"
                             />
                         </View>
-
                         <InfoBox title={user?.username} containerStyles="mt-5" titleStyles="text-lg" />
-
                         <View className="mt-5 flex flex-row">
                             <InfoBox
                                 title={posts.length || 0}
