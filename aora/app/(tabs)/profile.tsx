@@ -9,7 +9,7 @@ import { useGlobalContext } from "../../context/GlobalProvider";
 import { getUserPosts, signOut } from "../../lib/appwrite";
 import useAppwrite from "../../lib/useAppwrite";
 
-const Profile = () => {
+const Profile: React.FC = (): React.JSX.Element => {
     const { user, setUser, setIsLoggedIn } = useGlobalContext();
     const { data: posts } = useAppwrite(() => getUserPosts(user.$id));
 
