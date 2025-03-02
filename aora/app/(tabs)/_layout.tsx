@@ -10,7 +10,7 @@ type TabIconProps = {
 };
 
 const TabIcon: React.FC<TabIconProps> = ({ icon, color, name, focused }: TabIconProps): React.JSX.Element => (
-    <View className="flex items-center justify-center gap-2">
+    <View className="flex items-center justify-center gap-2 w-32">
         <Image source={icon} resizeMode="contain" tintColor={color} className="w-6 h-6" />
         <Text className={`${focused ? "font-psemibold" : "font-pregular"} text-xs`} style={{ color }}>
             {name}

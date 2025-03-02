@@ -3,9 +3,10 @@ import FormField from "@/components/FormField";
 import { icons } from "@/constants";
 import { useGlobalContext } from "@/context/GlobalProvider";
 import { createVideoPost } from "@/lib/appwrite";
-import { ResizeMode, Video } from "expo-av";
+import { useEvent } from "expo";
 import * as DocumentPicker from "expo-document-picker";
 import { router } from "expo-router";
+import { useVideoPlayer, VideoView } from "expo-video";
 import { useState } from "react";
 import { Alert, Image, KeyboardAvoidingView, Platform, ScrollView, Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -19,6 +20,10 @@ const Create: React.FC = (): React.JSX.Element => {
         thumbnail: null,
         prompt: "",
     });
+    const player = useVideoPlayer(form?.video?.uri, (player) => {
+        player.loop = true;
+    });
+    const { isPlaying } = useEvent(player, "playingChange", { isPlaying: player.playing });
 
     const openPicker = async (selectType: string) => {
         const result = await DocumentPicker.getDocumentAsync({
@@ -83,12 +88,22 @@ const Create: React.FC = (): React.JSX.Element => {
                     />
                     <View className="mt-7 space-y-2">
                         <Text className="text-base text-gray-100 font-pmedium">Upload Video</Text>
-                        <TouchableOpacity onPress={() => openPicker("video")}>
+                        <TouchableOpacity
+                            onPress={() => {
+                                if (isPlaying) {
+                                    player.pause();
+                                } else {
+                                    player.play();
+                                }
+                                openPicker("video");
+                            }}
+                        >
                             {form.video ? (
-                                <Video
-                                    source={{ uri: form.video.uri }}
+                                <VideoView
                                     className="w-full h-64 rounded-2xl"
-                                    resizeMode={ResizeMode.COVER}
+                                    player={player}
+                                    allowsFullscreen
+                                    allowsPictureInPicture
                                 />
                             ) : (
                                 <View className="w-full h-40 px-4 bg-black-100 rounded-2xl border border-black-200 flex justify-center items-center">
