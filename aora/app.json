@@ -4,12 +4,12 @@
         "slug": "aora",
         "version": "1.0.0",
         "orientation": "portrait",
-        "icon": "./assets/images/logo.png",
+        "icon": "./assets/images/empty.png",
         "scheme": "aora",
         "userInterfaceStyle": "automatic",
         "newArchEnabled": true,
         "splash": {
-            "image": "./assets/images/logo.png",
+            "image": "./assets/images/empty.png",
             "resizeMode": "contain",
             "backgroundColor": "#161622"
         },
@@ -18,13 +18,15 @@
             "package": "com.jsm.aora"
         },
         "android": {
-            "supportsTablet": true,
-            "package": "com.jsm.aora"
+            "adaptiveIcon": {
+                "foregroundImage": "./assets/images/empty.png",
+                "backgroundColor": "#161622"
+            }
         },
         "web": {
             "bundler": "metro",
             "output": "static",
-            "favicon": "./assets/images/logo.png"
+            "favicon": "./assets/images/empty.png"
         },
         "plugins": [
             "expo-router",
@@ -39,16 +41,10 @@
             [
                 "expo-splash-screen",
                 {
-                    "ios": {
-                        "backgroundColor": "#161622",
-                        "image": "./assets/images/logo.png",
-                        "resizeMode": "cover"
-                    },
-                    "android": {
-                        "backgroundColor": "#161622",
-                        "image": "./assets/images/logo.png",
-                        "resizeMode": "cover"
-                    }
+                    "image": "./assets/images/empty.png",
+                    "imageWidth": 200,
+                    "resizeMode": "contain",
+                    "backgroundColor": "#161622"
                 }
             ]
         ],
