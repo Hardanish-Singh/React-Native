@@ -9,7 +9,6 @@ SplashScreen.preventAutoHideAsync();
 
 const RootLayout: React.FC = (): React.JSX.Element | null => {
     // Load the custom fonts before the app loads.
-
     const [fontsLoaded, error] = useFonts({
         "Poppins-Black": require("../assets/fonts/Poppins-Black.ttf"),
         "Poppins-Bold": require("../assets/fonts/Poppins-Bold.ttf"),
