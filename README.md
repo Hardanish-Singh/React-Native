@@ -1,3 +1,3 @@
 # React Native
 
-Repository for React Native Projects.
+Repository for React Native Projects
