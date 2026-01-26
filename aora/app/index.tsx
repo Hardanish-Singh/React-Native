@@ -7,9 +7,9 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { images } from "../constants";
 
 const App: React.FC = (): React.JSX.Element => {
-    // get the global context state to check if the app is loading or logged in
+    // Get the global context state to check if the app is loading or logged in
     const { isLoading, isLoggedIn } = useGlobalContext();
-    // if not loading and logged in then redirect to home screen
+    // If not loading and logged in then redirect to home screen
     if (!isLoading && isLoggedIn) {
         return <Redirect href="/home" />;
     }
