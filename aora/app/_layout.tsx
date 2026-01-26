@@ -23,7 +23,7 @@ const RootLayout: React.FC = (): React.JSX.Element | null => {
 
     // Wait until the fonts have loaded before showing the app.
     useEffect(() => {
-        // if there is an error loading the fonts then throw the error
+        // If there is an error loading the fonts then throw the error
         if (error) {
             throw error;
         }
