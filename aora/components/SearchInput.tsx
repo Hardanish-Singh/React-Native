@@ -14,6 +14,7 @@ const SearchInput: React.FC<SearchInputProps> = ({ initialQuery }: SearchInputPr
 
     const handleSubmit = () => {
         if (query === "") {
+            // Alert the user if the search query is empty.
             return Alert.alert("Missing Query", "Please input something to search results across database");
         }
         if (pathname.startsWith("/search")) {
