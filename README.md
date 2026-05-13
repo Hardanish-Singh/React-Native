@@ -65,3 +65,4 @@ Ensure you have the following installed:
     ```
 
 4.  Scan the QR code with **Expo Go** to view the app on your device.
+
