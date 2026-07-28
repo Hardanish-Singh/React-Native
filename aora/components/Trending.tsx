@@ -5,7 +5,7 @@ import { FlatList, Image, TouchableOpacity, View } from "react-native";
 import WebView from "react-native-webview";
 import { icons } from "../constants";
 
-const TrendingItem: React.FC<any> = ({ item }: any) => {
+const TrendingItem: React.FC<{ item: any }> = ({ item }) => {
     const player = useVideoPlayer(item.video, (player) => {
         player.loop = true;
     });
