@@ -59,7 +59,7 @@ const TrendingItem: React.FC<{ item: any }> = ({ item }) => {
     );
 };
 
-const Trending: React.FC<any> = ({ posts }: any) => (
+const Trending: React.FC<{ posts: any[] }> = ({ posts }) => (
     <FlatList
         data={posts}
         horizontal
