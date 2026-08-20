@@ -1,6 +1,6 @@
 # React Native Projects
 
-This repository hosts a video sharing mobile application built with React Native, Expo, and NativeWind.
+This repository hosts a video sharing mobile application built with React Native and Expo.
 
 ## Projects
 
