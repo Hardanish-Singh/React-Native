@@ -5,7 +5,7 @@ import { Image, Text, TouchableOpacity, View } from "react-native";
 import WebView from "react-native-webview";
 import { icons } from "../constants";
 
-const VideoCard: React.FC<any> = ({ video }: any) => {
+const VideoCard: React.FC = ({ video }: any) => {
     const {
         title,
         thumbnail,
