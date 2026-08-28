@@ -31,7 +31,7 @@ const SignIn: React.FC = (): React.JSX.Element => {
             setIsLoggedIn(true);
             Alert.alert("Success", "User signed in successfully");
             router.replace("/home");
-        } catch (error: any) {
+        } catch (error: Error | any) {
             Alert.alert("Error", error.message);
         } finally {
             setSubmitting(false);
